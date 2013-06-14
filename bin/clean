@@ -1,0 +1,46 @@
+#!/usr/bin/env node
+
+// Dependencies
+var fs = require('fs');
+var pull = require('pull-stream');
+var glob = require('glob');
+
+var clean = require('../index');
+
+
+// Get files from cli
+var args = process.argv.slice(2);
+var globList = args.shift();
+
+pull(
+  pull.values(glob.sync(globList)),
+  read(),
+  clean(),
+  write()
+);
+
+// Read from disk and create a simple file object
+function read() {
+  return pull.asyncMap(function (data, cb) {
+    fs.readFile(data, function(error, buffer) {
+      cb(error, {file: data, content: buffer.toString()});
+    });
+  });
+}
+
+// Write back to disk
+function write() {
+  return pull.drain(function (data) {
+    fs.writeFile(data.file, data.content, function (err) {
+      if (err) return console.log(err);
+      console.log('Written ' + data.file);
+    });
+  });
+}
+
+// Simple logging function
+function log() {
+  return pull.collect(function(e, arr) {
+    console.log(arr);
+  });
+}

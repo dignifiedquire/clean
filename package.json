@@ -1,0 +1,20 @@
+{
+  "name": "clean.js",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Friedel Ziegelmayer",
+  "license": "MIT",
+  "dependencies": {
+    "pull-glob": "~1.0.0",
+    "pull-stream": "~2.19.0",
+    "pull-split": "~0.1.1",
+    "esprima": "~1.0.3",
+    "escodegen": "0.0.22",
+    "glob": "~3.2.1"
+  }
+}
