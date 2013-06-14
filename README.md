@@ -12,7 +12,7 @@ Clean up your JavaScript files
 $ git clone https://github.com/Dignifiedquire/clean.git
 $ cd clean
 $ npm install
-$ ./bin/clean **/*.js
+$ ./bin/clean folderWithFiles/*.js
 ```
 
 ## Known Problems
@@ -24,6 +24,6 @@ and added back by hand:
 var awesome variable = 10 \\ this comment will be removed
 ```
 
-All comments that are alone their line are preserved.
+All comments that are alone on their line are preserved.
 
-[http://esprima.org/]
+[esprima]: http://esprima.org/
